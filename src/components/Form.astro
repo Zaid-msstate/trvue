@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  formspree?: string; // e.g. https://formspree.io/f/xxxxxxx
+  netlify?: boolean;  // if true, use Netlify Forms
+  name?: string;      // Netlify form name
+  subject?: string;
+  redirect?: string;  // e.g. /thanks
+  fields?: Array<{ label: string; name: string; type?: string; required?: boolean; placeholder?: string; options?: string[] }>;
+}
+const {
+  title,
+  description = '',
+  formspree,
+  netlify = false,
+  name = 'contact',
+  subject = '',
+  redirect = '/thanks',
+  fields = []
+} = Astro.props as Props;
+
+// compute form attributes
+const action = formspree ? formspree : undefined;
+const method = "POST";
+const netlifyAttrs = netlify ? { 'data-netlify': 'true', name } : {};
+---
+
+<section class="space-y-3">
+  <h2 class="text-2xl font-semibold">{title}</h2>
+  {description && <p class="text-gray-400 text-sm">{description}</p>}
+  <form class="card space-y-4" {...netlifyAttrs} method={method} action={action}>
+    {redirect && <input type="hidden" name="redirect" value={redirect} />}
+    {subject && <input type="hidden" name="_subject" value={subject} />}
+    {fields.map((f) => (
+      <label class="block">
+        <span class="text-xs text-gray-400">{f.label}{f.required ? ' *' : ''}</span>
+        {f.type === 'textarea' ? (
+          <textarea name={f.name} required={f.required} placeholder={f.placeholder} class="w-full mt-1 rounded-xl border border-white/10 bg-white/5 p-3 outline-none focus:ring-2 ring-blue-400 min-h-36"></textarea>
+        ) : f.type === 'select' ? (
+          <select name={f.name} required={f.required} class="w-full mt-1 rounded-xl border border-white/10 bg-white/5 p-3 outline-none focus:ring-2 ring-blue-400">
+            {(f.options || []).map(o => <option value={o}>{o}</option>)}
+          </select>
+        ) : (
+          <input type={f.type || 'text'} name={f.name} required={f.required} placeholder={f.placeholder} class="w-full mt-1 rounded-xl border border-white/10 bg-white/5 p-3 outline-none focus:ring-2 ring-blue-400" />
+        )}
+      </label>
+    ))}
+    <!-- spam honeypot -->
+    <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+    <button class="btn btn-primary" type="submit">Send</button>
+    <p class="text-xs text-gray-400">By submitting, you agree to our <a href="/privacy">privacy note</a>.</p>
+  </form>
+</section>

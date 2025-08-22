@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts.astro';
+import Form from '../components/Form.astro';
+---
+<Layout title="Submit a product request — trvue" description="Tell us what you need. We'll get back with vetted options and quotes.">
+  <Form
+    title="Submit a product request"
+    description="Fill this in and we’ll reply with next steps."
+    formspree="https://formspree.io/f/xldlqprl" 
+    netlify={false}
+    name="request"
+    subject="New trvue product request"
+    redirect="/thanks"
+    fields={[
+      { label: 'Company', name: 'company', placeholder: 'Your company or project name' },
+      { label: 'Your name', name: 'name', required: true, placeholder: 'Jane Doe' },
+      { label: 'Email', name: 'email', required: true, placeholder: 'you@company.com', type: 'email' },
+      { label: 'Budget range', name: 'budget', type: 'select', options: ['Unspecified','Under $10k','$10k–$50k','$50k–$250k','$250k+'] },
+      { label: 'What do you need?', name: 'message', type: 'textarea', required: true, placeholder: 'e.g., 10k units of 12oz gummy pouches; target cost $0.65; delivery Q1 2026' },
+    ]}
+  />
+</Layout>
