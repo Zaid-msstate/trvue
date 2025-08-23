@@ -11,7 +11,7 @@ function About() {
         p: { xs: 2, sm: 4, md: 6 },
         maxWidth: { xs: '100%', sm: '38rem' },
         width: '100%',
-        display: 'flex',
+        display: 'flex', 
         flexDirection: 'column',
         gap: 3,
         border: 'none',
