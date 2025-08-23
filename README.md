@@ -1,49 +1,12 @@
-# trvue — Astro + Tailwind (minimal, forms-ready)
+# React + Vite
 
-A simple, fast site for **trvue: empowering global trade**. Two working forms (request + contact) using **Formspree** by default, or **Netlify Forms** if you deploy to Netlify.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Quick start
+Currently, two official plugins are available:
 
-```bash
-# 1) Install deps
-npm install
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-# 2) Run dev server
-npm run dev
-# open http://localhost:4321
-```
+## Expanding the ESLint configuration
 
-## Configure forms (choose ONE)
-
-### Option A — Formspree (works anywhere)
-1. Create a form at https://formspree.io
-2. Copy your endpoint (looks like `https://formspree.io/f/abcd1234`)
-3. Update the two files:
-   - `src/pages/request.astro` (replace `your-endpoint`)
-   - `src/pages/contact.astro` (replace `your-endpoint`)
-
-### Option B — Netlify Forms (if deploying to Netlify)
-1. Set `netlify={true}` and remove `formspree` prop on the `<Form />` component in the pages.
-2. Deploy to Netlify; submissions appear in the Netlify dashboard.
-
-## Deploy
-
-### Vercel
-- Import the repo in Vercel and deploy (zero config).
-
-### Netlify
-- Push to GitHub, then "New site from Git" in Netlify.
-
-## Customize
-- Colors live in `src/styles/global.css` (`--brand`, `--brand2`).
-- Favicon: `public/favicon.svg`. OG image: `public/og-image.png`.
-- Pages in `src/pages/`: `index.astro`, `request.astro`, `contact.astro`, `thanks.astro`, `privacy.astro`.
-
-## Domain (GoDaddy → Vercel/Netlify)
-- Add a CNAME for `www` to your host (Vercel/Netlify).
-- Add A/ALIAS for apex to your host if needed.
-- In your repo, set a `CNAME` file or configure the domain in the dashboard of your host.
-
----
-
-Built with ❤️ using Astro + Tailwind.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
