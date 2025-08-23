@@ -1,4 +1,4 @@
-name: Deploy CRA to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -9,6 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,14 +22,43 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+
       - run: npm ci
-      - run: npm run build  # outputs to build/
-      - uses: actions/upload-pages-artifact@v3
+      - run: npm run build
+
+      # Debug: show possible output dirs
+      - name: List outputs
+        run: |
+          ls -la || true
+          for d in dist build out; do
+            echo "---- $d ----"; [ -d "$d" ] && ls -la "$d" || echo "missing"
+          done
+
+      # Detect the first existing non-empty output dir
+      - name: Locate build output
+        id: locate
+        run: |
+          set -e
+          for d in dist build out; do
+            if [ -d "$d" ] && [ "$(ls -A "$d")" ]; then
+              echo "dir=$d" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "No build output found. Check your build script & framework." >&2
+          exit 1
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ${{ steps.locate.outputs.dir }}
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - id: deployment
+        uses: actions/deploy-pages@v4
