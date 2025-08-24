@@ -1,19 +1,27 @@
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+    <AppBar position="sticky" sx={{ backgroundColor: 'transparent', color: 'inherit', boxShadow: 'none', backdropFilter: 'blur(10px)' }}>
+      <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>
           Trvue
         </Typography>
-        <Button color="inherit" component={Link} to="/">Home</Button>
-        <Button color="inherit" component={Link} to="/about">About</Button>
-        <Button color="inherit" component={Link} to="/contact">Contact</Button>
-        <Button variant="contained" sx={{ ml: 2 }} component={Link} to="/get-started">
-          Get Started
-        </Button>
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          <Button component={Link} to="/" sx={{ color: 'text.primary', textTransform: 'none' }}>
+            Home
+          </Button>
+          <Button component={Link} to="/about" sx={{ color: 'text.primary', textTransform: 'none' }}>
+            About
+          </Button>
+          <Button component={Link} to="/contact" sx={{ color: 'text.primary', textTransform: 'none' }}>
+            Contact
+          </Button>
+          <Button variant="contained" component={Link} to="/get-started" sx={{ ml: 2, borderRadius: 3, textTransform: 'none' }}>
+            Get Started
+          </Button>
+        </Box>
       </Toolbar>
     </AppBar>
   );
