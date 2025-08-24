@@ -26,7 +26,7 @@ function Home() {
         border: 'none',
         justifyContent: 'center',
       }}>
-        <img src="/trvue_logo.svg" alt="Trvue logo" style={{ height: '56px', marginBottom: '2rem' }} />
+  <img src="/thelogo.svg" alt="Trvue logo" style={{ height: '56px', marginBottom: '2rem' }} />
         <Typography variant="h2" sx={{ fontWeight: 700, color: '#111', mb: 2, textAlign: 'center', fontSize: { xs: '2rem', sm: '2.5rem', md: '2.8rem' } }}>Source globally with zero friction.</Typography>
         <Typography variant="h5" sx={{ color: '#222', mb: 2, textAlign: 'center' }}>Trvue is where small businesses meet verified resources, market clarity, and a smarter way to grow.</Typography>
         <Typography sx={{ fontSize: { xs: '1rem', sm: '1.1rem' }, color: '#ffd600', mb: 3, textAlign: 'center' }}>Minimal overhead. Maximum clarity.</Typography>
@@ -66,7 +66,7 @@ function App() {
         <AppBar position="static" elevation={0} sx={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(8px)', borderBottom: '1px solid #eee', boxShadow: 'none' }}>
           <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 4, minHeight: '80px' }}>
             <Button component={Link} to="/" sx={{ p: 0, minWidth: 0, background: 'none' }}>
-              <img src="/trvue_logo.svg" alt="Trvue logo" style={{ height: '40px' }} />
+              <img src="/thelogo.svg" alt="Trvue logo" style={{ height: '40px' }} />
             </Button>
             <Button component={Link} to="/" sx={{ color: '#111', fontWeight: 500, fontSize: '1.1rem', background: 'none', textTransform: 'none', mx: 2 }}>Home</Button>
             <Button component={Link} to="/about" sx={{ color: '#111', fontWeight: 500, fontSize: '1.1rem', background: 'none', textTransform: 'none', mx: 2 }}>About</Button>
