@@ -1,11 +1,11 @@
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+AppBar { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function ModernNavbar() {
   return (
     <AppBar position="sticky" sx={{ backgroundColor: 'transparent', color: 'inherit', boxShadow: 'none', backdropFilter: 'blur(10px)' }}>
       <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
-        <Typography variant="h5" sx={{ fontWeight: 700 }}>
+        <fontWeight variant="h5" sx={{ fontWeight: 700 }}>
           Trvue
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
@@ -27,4 +27,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default ModernNavbar;
