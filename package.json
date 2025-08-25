@@ -1,31 +1,20 @@
 {
-  "name": "trvue_react",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/material": "^7.3.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "vite": "^7.1.2"
+    "@fortawesome/fontawesome-free": "6.7.2",
+    "@fortawesome/fontawesome-svg-core": "6.7.2",
+    "@fortawesome/free-brands-svg-icons": "6.7.2",
+    "@fortawesome/free-regular-svg-icons": "6.7.2",
+    "@fortawesome/free-solid-svg-icons": "6.7.2",
+    "@types/prismjs": "1.26.5",
+    "autoprefixer": "10.4.21",
+    "http-server": "14.1.1",
+    "image-size": "2.0.2",
+    "postcss": "8.5.6",
+    "pptxgenjs": "4.0.0",
+    "prismjs": "1.30.0",
+    "sharp": "0.34.1",
+    "tailwindcss": "4.1.10",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3"
   }
 }
